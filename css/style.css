@@ -255,6 +255,9 @@ header {
     font-size:1.7rem;
     width:100%;
 }
+.development__arrow-down:hover {
+    cursor:pointer;
+}
 @media only screen and (max-device-width: 768px) {
     .development {
        position:relative;
@@ -511,12 +514,12 @@ header {
 .sections-work {
     margin-bottom:4em;
 }
-.sections__work__section {
+.sections-work__section {
     width:31%;
     height:22em;
     margin-bottom:3em;
 }
-.sections__work__section > img {
+.sections-work__section > img {
 position:relative;
     right:0em;bottom:0em;
     width:100%;
@@ -525,7 +528,7 @@ position:relative;
     transition-duration:400ms;
     transition-property:all;
 }
-.sections__work__section >img:hover {
+.sections-work__section >img:hover {
     position:relative;
     right:0.5em;bottom:0.5em;
     box-shadow:0.5em 0.5em 0.3em #c3c3c3;
