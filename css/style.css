@@ -27,6 +27,9 @@ body {
 /*--------------------*/
 header {
     background-color:white;
+    position: fixed;
+    width:100%;
+    z-index: 5;
 }
 .container {
     width:75%;
@@ -162,6 +165,8 @@ header {
 /*---Development---*/
 /*--------------------*/
 .development {
+   position: relative;
+   top:3em;
    height:44em;
    width:100%;
    background-image:url("../image/header/pexels-photo.png");
