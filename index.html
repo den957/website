@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shablon2</title>
+    <title>Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -16,12 +16,6 @@
             <div class="header__row">
                 <div class="header__logo">
                     <img src="image/header/Your Logo.png" alt="">
-                </div>
-                <div class="header__burger-wrapper">
-                    <div class="header__burger"><span></span></div>
-                </div>
-                <div class="header__burger-close">
-                    <i class="fas fa-times"></i>
                 </div>
                 <div class="header__body">
                     <ul class="header__menu">
@@ -58,7 +52,7 @@
         </div>
         <div class="about-us">
             <div class="container">
-                <div class="about-us__body title">
+                <div class="about-us__body title ">
                     <h4>About us</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Ut enim ad minim veniam</p>
@@ -300,10 +294,13 @@
                             <p>General Manager</p>
                             <div class="sections-team__social">
                                 <ul class="sections-team__menu">
-                                    <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-internet-explorer"></i></a></li>
+                                    <li><a class="facebook" href="">
+                                            <i class="fab fa-facebook-f"></i>
+                                            <span class="wave-btn"></span>
+                                        </a></li>
+                                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href=""><i class="fab fa-facebook-messenger"></i></a></li>
+                                    <li><a href=""><i class="fab fa-internet-explorer"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -313,7 +310,10 @@
                             <p>Office Director</p>
                             <div class="sections-team__social">
                                 <ul class="sections-team__menu">
-                                    <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="facebook" href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                            <span class="wave-btn"></span>
+                                        </a></li>
                                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
                                     <li><a href="#"><i class="fab fa-internet-explorer"></i></a></li>
@@ -326,7 +326,10 @@
                             <p>Admin</p>
                             <div class="sections-team__social">
                                 <ul class="sections-team__menu">
-                                    <li><a class="facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a class="facebook" href="#">
+                                            <i class="fab fa-facebook-f"></i>
+                                            <span class="wave-btn"></span>
+                                        </a></li>
                                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
                                     <li><a href="#"><i class="fab fa-internet-explorer"></i></a></li>
@@ -346,7 +349,59 @@
         </div>
     </footer>
     <div class="circle"></div>
-    <script src="js/index.js"></script>
+    <script>
+        if ((/iPhone|iPad|iPod|Android/i.test(navigator.userAgent) === false)) {
+            window.addEventListener('DOMContentLoaded', function () {
+                const scrollPageDown = function () {
+                    // receive buttons 
+                    const arrowButton = document.querySelector('.development__arrow-down'),
+                        homeButton = document.querySelector('.header__home'),
+                        aboutButton = document.querySelector('.header__about'),
+                        servisingButton = document.querySelector('.header__servising'),
+                        portfolioButton = document.querySelector('.header__portfolio'),
+                        pricingButton = document.querySelector('.header__pricing'),
+                        teamButton = document.querySelector('.header__team')
+                    // receive main elements (dividing our page into categories)
+                    const aboutUs = document.querySelector('.about-us__body'),
+                        services = document.querySelector('.services__body'),
+                        portfolio = document.querySelector('.latest-work__body'),
+                        pricingPlan = document.querySelector('.pricing-plan__body'),
+                        teamMember = document.querySelector('.team__body')
+
+                    // function animation 
+                    const scrollPage = (position) => {
+                        event.preventDefault()
+                        window.scroll({
+                            left: 0,
+                            top: position,
+                            behavior: 'smooth'
+                        })
+                    }
+                    //cordinates 
+                    const aboutCordinateY = document.body.scrollTop + aboutUs.getBoundingClientRect().top
+                    const servicesCordinateY = document.body.scrollTop + services.getBoundingClientRect().top
+                    const portfolioCordinateY = document.body.scrollTop + portfolio.getBoundingClientRect().top
+                    const pricingPlanCordinateY = document.body.scrollTop + pricingPlan.getBoundingClientRect().top
+                    const teamCordinateY = document.body.scrollTop + teamMember.getBoundingClientRect().top
+                    //button click
+                    arrowButton.addEventListener('click', () => { scrollPage(aboutCordinateY, event) })
+                    homeButton.addEventListener('click', () => { scrollPage(document.body.scrollTop, event) })
+                    aboutButton.addEventListener('click', () => { scrollPage(aboutCordinateY, event) })
+                    servisingButton.addEventListener('click', () => { scrollPage(servicesCordinateY, event) })
+                    portfolioButton.addEventListener('click', () => { scrollPage(portfolioCordinateY, event) })
+                    pricingButton.addEventListener('click', () => { scrollPage(pricingPlanCordinateY, event) })
+                    teamButton.addEventListener('click', () => { scrollPage(teamCordinateY, event) })
+                }
+                scrollPageDown()
+                window.addEventListener('scroll', () => {
+                    let item = document.querySelector('.sections-about-us')
+                    if (pageYOffset > item.offsetHeight) {
+                        item.classList.add('sections-about-us__active')
+                    }
+                })
+            })
+        }
+    </script>
 </body>
 
 </html>
